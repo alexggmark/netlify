@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:300,600" rel="stylesheet">
+		<script src="libs/animejs/lib/anime.min.js"></script>
+		<style>
+		* {
+			box-sizing: border-box;
+		}
+		.shadow {
+			-webkit-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
+			-moz-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
+			box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.17);
+		}
+		body {
+			/* background-color: #00e4bc; 
+				Tango Pink = EF767A
+				Deep carmine = EF3E36
+			*/
+			background-color: #fff;
+			margin: 0;
+		}
+		.container {
+			width: 100%;
+			margin: 0 auto;
+			/* border: 1px solid red; */
+		}
+		@media(min-width:768px){
+			.container {
+				width: 100%;
+			}
+		}
+		@media(min-width:992px){
+			.container {
+				width: 900px;
+			}
+		}
+		@media(min-width:1200px){
+			.container {
+				width: 1120px;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+
+		/* ------------------------ TYPOGRAPHY ------------------------ */
+
+		body {
+			font-family: 'Nunito', sans-serif;
+		}
+		h2 {
+			font-size:56px;
+			margin-bottom:2rem;
+		}
+		/*
+		h2::after {
+			display: block;
+			content: '';
+			height: 0px;
+			width: 100%;
+		}
+		*/
+		/* ------------------------ / TYPOGRAPHY ------------------------ */
+
+		/* ------------------------ MENU LINK ELEMENTS ------------------------ */
+		menu {
+			margin: 0;
+			padding: 0;
+			background-color: #00e4bc;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		menu .container {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		menu .menu-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		menu .menu-container .menu-inner {
+			width:calc(100% - 150px);
+			display: flex;
+		    align-items: center;
+		}
+		menu .menu-container .menu-inner ul {
+			list-style: none;
+			padding-left: 0;
+			margin: 0;
+		}
+		menu .menu-container .menu-inner ul li {
+			float: none;
+		}
+		menu .menu-container .menu-ctas {
+			width: 150px;
+			position: relative;
+
+		}
+		@media(min-width:768px){
+			menu .menu-container .menu-inner ul li {
+				float: left;
+				margin-right: 36px;
+			}
+		}
+		@media(min-width:992px){
+			menu .menu-container {
+				flex-direction: row;
+			}
+			menu .menu-container .menu-inner {
+				
+				margin-top:0;
+			}
+			menu .menu-container .menu-ctas {
+				width: 250px;
+			}
+		}
+		@media(min-width:1200px){
+
+		}
+
+        	/* MENU ITEM ANIMATION */
+		menu .menu-container .menu-inner ul li {
+			transition:0.4s;
+			font-size: 22px;
+		}
+		menu .menu-container .menu-inner ul li:hover {
+			cursor: pointer;
+			transform: translateX(8px);
+		}
+		menu .menu-container .menu-inner ul li:hover::after {
+			display: block;
+			position: relative;
+			content: '';
+			height: 6px;
+			width: 36px;
+			background-color: #fff;
+			margin-top: 6px;
+		}
+
+		@media(min-width:768px){
+			menu .menu-container .menu-inner ul li {
+				font-size: 18px;
+				padding: 8px;
+			}
+			menu .menu-container .menu-inner ul li:hover {
+				cursor: pointer;
+				transform: translateY(5px);
+			}
+			menu .menu-container .menu-inner ul li:hover::after {
+				display: block;
+				position: absolute;
+				content: '';
+				height: 6px;
+				width: 36px;
+				background-color: #fff;
+				margin-top: 6px;
+			}
+		}
+
+			/* / MENU ITEM ANIMATION */
+
+		/* ------------------------ / MENU LINK ELEMENTS ------------------------ */
+
+		/* ------------------------ HEADER LOGO ELEMENTS ------------------------ */
+		header {
+			background-color: #00e4bc;
+			position: relative;
+			z-index: 1;
+		}
+		header .svg-logo-container {
+			max-width:400px;
+			padding-top:7.5rem;
+			padding-bottom:1rem;
+			padding-left:1rem;
+			padding-right:1.5rem;
+		}
+		header .svg-logo-container svg {
+			overflow:visible;
+		}
+		@media(min-width:576px){
+			header .svg-logo-container {
+				padding-top:10rem;
+				max-width:520px;
+			}
+		}
+		@media(min-width:1200px){
+			header .svg-logo-container {
+				padding-top:11rem;
+				max-width:772px;
+			}
+		}
+        header .cls-1, header .cls-2 {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+            stroke-width: 60px;
+        }
+
+        	/* ROTATE LOGO MED-QUERIES & OTHER */
+
+        @media(max-width:576px){
+			header .svg-logo-container {
+				transform: rotate(90deg);
+				transform-origin: 30% -100%;
+				max-width: 100%;
+				padding:0;
+			}
+			header .rotate-logo-inner {
+				padding: 50% 0;
+
+			}
+			header .svg-logo-container svg {
+				overflow:hidden;
+			}
+		}
+        	/* / ROTATE LOGO MED-QUERIES */
+
+        /* ------------------------ / HEADER LOGO ELEMENTS ------------------------ */
+
+        /* ------------------------ MAIN ELEMENTS ------------------------ */
+        main {
+			font-size: 18px;
+			font-weight: 300;
+			color: #3f464c;
+			display: inline-block;
+			width: 100%;
+        }
+        main .container-strip {
+        	background-color:#f1f1f1;
+        	padding-top: .5rem;
+    		padding-bottom: 2.5rem;
+        }
+        main .content {
+        	padding-left: 2rem;
+        	padding-right: 0.2rem;
+        	padding-bottom: 2rem;
+        }
+        main .content.animate {
+        	opacity: 0;
+        }
+        main .box {
+        	display: flex;
+        	align-items: center;
+        	justify-content: center;
+        	width: 100%;
+        	/* min-height:260px; */
+        	background-color:rgba(255,255,255,0);
+        	opacity: 0;
+        	padding: 2rem 2rem;
+
+        }
+        main .box.left {
+        	float: left;
+        	clear:right;
+        }
+        main .box.right {
+        	float: right;
+        	clear: left;
+        }
+        main .box div {
+        	display: flex;
+        	flex-direction: column;
+        }
+        main .box div span {
+			margin-bottom: 1.5rem;
+		}
+		@media(min-width:768px){
+	        main .box {
+	        	padding: 2rem 5rem;
+	        }
+		}
+		@media(min-width:992px){
+
+		}
+		@media(min-width:1200px){
+	        main .box {
+	        	width: 60%;
+	        	padding: 1rem 2rem;
+	        }
+		}
+
+		footer {
+			background-color: #00e4bc;
+			color: #fff;
+			position: relative;
+			bottom: 0;
+			font-size: 20px;
+		}
+		footer .footer-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height:400px;
+			padding-top:6rem;
+			padding-bottom:6rem;
+		}
+		footer .footer-container span {
+			padding:2rem;
+		}
+
+		/* ------------------------ / MAIN ELEMENTS ------------------------ */
+
+		/* ------------------------ BUTTONS ------------------------ */
+		a.blu-btn {
+			color: #fff;
+			text-decoration: none;
+			background-color: #EF3E36;
+			padding: 0.8rem 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 400;
+			border-radius:3px;
+			font-size:16px;
+			transition:0.2s;
+		}
+		a.blu-btn:hover {
+			background-color: #f45249;
+		}
+		main a.blu-btn {
+			background-color: #00e4bc;
+			max-width: 160px;
+		}
+		main a.blu-btn:hover {
+			color: #fff;
+			background-color: #13f7cd;
+		}
+		main .content a.blu-btn {
+			margin-top: 2rem;
+		}
+		/* ------------------------ / BUTTONS ------------------------ */
+		</style>
+	</head>
+	<body>
+
+		<menu>
+			<div class="container menu-container">
+				 <div class="menu-inner">
+				 	<ul>
+				 		<li>Home</li>
+				 		<li>FAQ</li>
+				 		<li>About</li>
+				 		<li>Portfolio</li>
+				 		<li>Contact</li>
+				 	</ul>
+				 </div>
+				 <div class="menu-ctas">
+				 	<a class="blu-btn" href="#">Contact me</a>
+				 </div>
+			</div>
+		</menu>
+		<header>
+			<div class="container">
+					<div class="rotate-logo-inner">
+						<div class="svg-logo-container">
+						<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1988.64 247.73">
+						    <line class="cls-1" x1="43.49" y1="52" x2="186.33" y2="52" />
+						    <line class="cls-1" x1="114.91" y1="52" x2="114.91" y2="194.83" />
+						    <path class="cls-1" d="M320.5,52a70.69,70.69,0,0,0-70.69,70.69v72.14" />
+						    <path class="cls-1" d="M449.49,195.64c-37.4,0-69.91-31.61-71.75-68.81C375.87,89,406.66,55.54,444,52.25c22.26-2,44.46,7.38,59.27,24" />
+						    <path class="cls-1" d="M859.94,195.64c-37.4,0-69.91-31.61-71.75-68.81-1.88-37.8,28.92-71.29,66.26-74.58,22.25-2,44.46,7.38,59.27,24" />
+						    <circle class="cls-1" cx="1470.38" cy="123.08" r="72.98" />
+						    <path class="cls-1" d="M1327.13,124.8a69.21,69.21,0,1,1-69.21-69.21" />
+						    <path class="cls-1" d="M568.92,119.41A75.54,75.54,0,0,1,644.46,195" />
+						    <line class="cls-1" x1="567.92" y1="194.77" x2="567.92" y2="196.07" />
+						    <path class="cls-1" d="M573.92,46.16A146.79,146.79,0,0,1,720.71,193" />
+						    <path class="cls-1" d="M1957,156.18A102.83,102.83,0,0,1,1854.17,53.35" />
+						    <line class="cls-2" x1="1958.36" y1="53.35" x2="1958.36" y2="54.65" />
+						    <line class="cls-2" x1="1825.36" y1="196.25" x2="1825.36" y2="197.55" />
+						    <path class="cls-1" d="M1117.19,194.45V122.31a70.69,70.69,0,0,0-141.38,0v72.14" />
+						    <line class="cls-1" x1="1327.13" y1="124.8" x2="1327.13" y2="50.1" />
+						    <path class="cls-1" d="M1614,52.93v72.15a70.69,70.69,0,1,0,141.38,0V52.93" />
+						</svg>
+						</div>
+					</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="container">
+				<div class="content animate">
+					<h2>Testing title functionality</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Aenean vel massa quis mauris vehicula lacinia.</p>
+				</div>
+			</div>
+			<div class="container-strip">
+				<div class="container">
+					<div class="content">
+						<h2>Testing title functionality</h2>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+
+				<div class="box right">
+					<div>
+						<span>
+							<h2>Javascript</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box left">
+					<div>
+						<span>
+							<h2>Graphic Design</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box right">
+					<div>
+						<span>
+							<h2>Copywriting</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box left">
+					<div>
+						<span>
+							<h2>See Portfolio</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+
+			</div>
+		</main>
+
+		<footer>
+			<div class="footer-container container">
+				<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</span>
+				<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</span>
+			</div>
+		</footer>
+
+
+		<script>
+			const boxes = document.querySelectorAll('.box');
+			const genContent = document.querySelectorAll('.animate');
+
+			var logoAnim = anime({
+			  targets: '.cls-1',
+			  strokeDashoffset: [anime.setDashoffset, 0],
+			  easing: 'easeInOutSine',
+			  duration: 1500
+			});
+			var logoAnimBall = anime({
+				targets: '.cls-2',
+				translateX: ['500px','0'],
+				stroke: ['#00e4bc','#fff'],
+				duration:1500,
+				delay: anime.stagger(400)
+			})
+			/*
+			var contentAnim = anime({
+				targets: '.animate',
+				translateY: ['100px', '0'],
+				opacity: [0,1],
+				duration: 3500
+			});
+			*/
+
+			function isScrolledIntoView(el) {
+			    var rect = el.getBoundingClientRect();
+			    var elemTop = rect.top;
+			    var elemBottom = rect.bottom;
+			    var isVisible = (elemTop >= 0) && (elemTop <= window.innerHeight - 300);
+			    return isVisible;
+			}
+			function scrollAnimation(...elements){
+				elements.forEach(function(item){
+					item.forEach(function(item){
+						if(isScrolledIntoView(item)&&!item.classList.contains('completed')){
+							anime({
+								targets: item,
+								translateY: ['100px', '0'],
+								opacity: [0,1],
+								duration: 3500
+							});
+							item.classList.add('completed');
+						}
+					})
+				});
+			}
+
+			scrollAnimation(boxes, genContent);
+			window.addEventListener('scroll', function(e){
+				scrollAnimation(boxes, genContent);
+			})
+
+
+		</script>
+	</body>
+</html>
