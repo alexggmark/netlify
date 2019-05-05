@@ -5,6 +5,6 @@ app.get('/', (req, res) => {
 	res.send('HELLO!');
 })
 
-app.listen(port, function(){
+app.listen(3000, function(){
 	console.log('My app is working');
 })
