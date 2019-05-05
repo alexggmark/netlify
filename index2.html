@@ -25,6 +25,7 @@
 		.container {
 			width: 100%;
 			margin: 0 auto;
+			display: table;
 			/* border: 1px solid red; */
 		}
 		@media(min-width:768px){
@@ -150,14 +151,14 @@
 			}
 			menu .menu-container .menu-inner ul li:hover {
 				cursor: pointer;
-				transform: translateY(5px);
+				transform: translateY(11px);
 			}
 			menu .menu-container .menu-inner ul li:hover::after {
 				display: block;
 				position: absolute;
 				content: '';
-				height: 6px;
-				width: 36px;
+				height: 26px;
+				width: 100%;
 				background-color: #fff;
 				margin-top: 6px;
 			}
@@ -201,6 +202,9 @@
             stroke-linecap: round;
             stroke-miterlimit: 10;
             stroke-width: 60px;
+        }
+        header .cls-1 {
+
         }
 
         	/* ROTATE LOGO MED-QUERIES & OTHER */
@@ -320,9 +324,16 @@
 			border-radius:3px;
 			font-size:16px;
 			transition:0.2s;
+			position:relative;
+			z-index:2;
 		}
 		a.blu-btn:hover {
 			background-color: #f45249;
+		}
+		menu a.blu-btn:hover {
+			-webkit-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			-moz-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
 		}
 		main a.blu-btn {
 			background-color: #00e4bc;
@@ -424,6 +435,17 @@
 				</div>
 
 			</div>
+			<div class="container-strip">
+				<div class="container">
+					<div class="content">
+						<h2>Testing title functionality</h2>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Aenean vel massa quis mauris vehicula lacinia.</p>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+			</div>
 		</main>
 
 		<footer>
@@ -438,28 +460,29 @@
 			const boxes = document.querySelectorAll('.box');
 			const genContent = document.querySelectorAll('.animate');
 
+
 			var logoAnim = anime({
 			  targets: '.cls-1',
-			  strokeDashoffset: [anime.setDashoffset, 0],
+			  stroke: 'rgba(255,255,255, 1)',
+			  keyframes: [
+			    {strokeDashoffset: [anime.setDashoffset, 0],},
+			    {delay: 500},
+			  ],
 			  easing: 'easeInOutSine',
-			  duration: 1500
+			  duration: 3500,
+			  /*
+			  loop: true,
+			  direction: 'alternate'
+			  */
+			  
 			});
 			var logoAnimBall = anime({
 				targets: '.cls-2',
 				translateX: ['500px','0'],
 				stroke: ['#00e4bc','#fff'],
-				duration:1500,
+				duration:2000,
 				delay: anime.stagger(400)
 			})
-			/*
-			var contentAnim = anime({
-				targets: '.animate',
-				translateY: ['100px', '0'],
-				opacity: [0,1],
-				duration: 3500
-			});
-			*/
-
 			function isScrolledIntoView(el) {
 			    var rect = el.getBoundingClientRect();
 			    var elemTop = rect.top;
