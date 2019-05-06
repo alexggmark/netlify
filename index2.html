@@ -8,10 +8,22 @@
 		* {
 			box-sizing: border-box;
 		}
+		/* Adjust for fixed menu height on anchor scroll */
+		@media(min-width:768px){
+			*[id]::before { 
+			  display: block; 
+			  content: ''; 
+			  height: 20px; 
+			  visibility: hidden; 
+			}
+		}
 		.shadow {
 			-webkit-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
 			-moz-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
 			box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.17);
+		}
+		html {
+			scroll-behavior: smooth;
 		}
 		body {
 			/* background-color: #00e4bc; 
@@ -22,10 +34,14 @@
 			margin: 0;
 			overflow-x: hidden;
 		}
+		.full-width {
+			width: 100%!important;
+		}
 		.container {
 			width: 100%;
 			margin: 0 auto;
 			display: table;
+			transition: width 0.2s;
 			/* border: 1px solid red; */
 		}
 		@media(min-width:768px){
@@ -55,24 +71,27 @@
 			font-size:56px;
 			margin-bottom:2rem;
 		}
-		/*
-		h2::after {
-			display: block;
-			content: '';
-			height: 0px;
-			width: 100%;
+		main .container-strip.green h2 {
+			color: #fff;
 		}
-		*/
+		main p {
+			line-height: 2rem;
+		}
+		
 		/* ------------------------ / TYPOGRAPHY ------------------------ */
 
 		/* ------------------------ MENU LINK ELEMENTS ------------------------ */
 		menu {
+			position: relative;
+			top: 0;
 			margin: 0;
 			padding: 0;
 			background-color: #00e4bc;
 			color: #fff;
 			font-size: 18px;
 			font-weight: 600;
+			width: 100%;
+			z-index: 3;
 		}
 		menu .container {
 			padding-left: 1rem;
@@ -97,6 +116,10 @@
 		}
 		menu .menu-container .menu-inner ul li {
 			float: none;
+		}
+		menu .menu-container .menu-inner ul li a {
+			color: inherit;
+			text-decoration: inherit;
 		}
 		menu .menu-container .menu-ctas {
 			width: 150px;
@@ -138,7 +161,7 @@
 			display: block;
 			position: relative;
 			content: '';
-			height: 6px;
+			height: 2px;
 			width: 36px;
 			background-color: #fff;
 			margin-top: 6px;
@@ -151,14 +174,13 @@
 			}
 			menu .menu-container .menu-inner ul li:hover {
 				cursor: pointer;
-				transform: translateY(11px);
+				transform: translateY(6px);
 			}
 			menu .menu-container .menu-inner ul li:hover::after {
 				display: block;
 				position: absolute;
 				content: '';
-				height: 26px;
-				width: 100%;
+				height: 6px;
 				background-color: #fff;
 				margin-top: 6px;
 			}
@@ -233,13 +255,20 @@
 			font-size: 18px;
 			font-weight: 300;
 			color: #3f464c;
-			display: inline-block;
+			/* display: inline-block; */
 			width: 100%;
         }
         main .container-strip {
         	background-color:#f1f1f1;
-        	padding-top: .5rem;
-    		padding-bottom: 2.5rem;
+        	padding: .5rem 1rem 2.5rem 1rem;
+    		position: relative;
+    		z-index:2;
+        }
+        main .container-strip.green {
+        	background-color: #00e4bc;
+        }
+        main .container-strip.white {
+        	background-color: #fff;
         }
         main .content {
         	padding-left: 2rem;
@@ -295,21 +324,137 @@
 			color: #fff;
 			position: relative;
 			bottom: 0;
-			font-size: 20px;
 		}
 		footer .footer-container {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			min-height:400px;
-			padding-top:6rem;
-			padding-bottom:6rem;
+			padding-top:3rem;
+			padding-bottom:3rem;
 		}
-		footer .footer-container span {
+		footer .footer-container div {
 			padding:2rem;
+			width: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+		footer .footer-container .contact-details {
+			font-size: 20px;
+		}
+		footer .footer-container .contact-details span {
+			margin-bottom: 10px;
 		}
 
 		/* ------------------------ / MAIN ELEMENTS ------------------------ */
+
+		/* ------------------------ PORTFOLIO ELEMENTS ------------------------ */
+
+		main .portfolio-container {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+		main .portfolio-container .item {
+			position: relative;
+			width: 14%;
+			padding-top: 14%;
+			margin: 5px;
+			background-color: #f00;
+			background-size:cover;
+			background-position: center;
+			transition: 0.1s;
+		}
+		@media(max-width:1200px){
+			main .portfolio-container .item {
+				width: 19%;
+				padding-top: 19%;
+			}
+		}
+		@media(max-width:768px){
+			main .portfolio-container .item {
+				width: 24%;
+				padding-top: 24%;
+			}
+		}
+		@media(max-width:576px){
+			main .portfolio-container .item {
+				width: 40%;
+				padding-top: 40%;
+			}
+		}
+		main .portfolio-container .item a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		main .portfolio-container .item:hover {
+			opacity: 0.8;
+		}
+
+		.lightbox:target {
+			outline: none;
+			display: block;
+		}
+		.lightbox {
+			display: none;
+			position: fixed;
+			z-index: 999;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			top: 0;
+			left: 0;
+			background: rgba(255,255,255,0.9);
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.lightbox img {
+			max-width: calc(60% - 2rem);
+			margin: 1rem;
+		}
+		@media(max-width:768px){
+			.lightbox img {
+				max-width: calc(100% - 2rem);
+				margin: 1rem;
+			}
+		}
+		a.lightbox {
+			text-decoration: none;
+		}
+
+		/* ------------------------ / PORTFOLIO ELEMENTS ------------------------ */
+
+		/* ------------------------ LIST ------------------------ */
+
+		main .list-columns {
+			display: flex;
+			flex-direction: row;
+			padding-bottom: 2rem;
+		}
+		main .list-columns ul {
+			width: 50%;
+			margin-top: 0;
+		    margin-bottom: 0;
+		    font-size: 22px;
+		}
+		main .list-columns ul li {
+			margin-bottom: 0.3rem;
+			margin-left: 2rem;
+		}
+		@media(max-width:768px){
+			main .list-columns {
+				flex-direction: column;
+			}
+			main .list-columns ul {
+				width: 100%;
+			}
+		}
+
+		/* ------------------------ / LIST ------------------------ */
 
 		/* ------------------------ BUTTONS ------------------------ */
 		a.blu-btn {
@@ -343,6 +488,17 @@
 			color: #fff;
 			background-color: #13f7cd;
 		}
+		footer a.blu-btn {
+			background-color: transparent;
+			border: 1px solid #fff;
+		}
+		footer a.blu-btn:hover {
+			background-color: #fff;
+			color: #00e4bc;
+			-webkit-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			-moz-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+		}
 		main .content a.blu-btn {
 			margin-top: 2rem;
 		}
@@ -355,15 +511,16 @@
 			<div class="container menu-container">
 				 <div class="menu-inner">
 				 	<ul>
-				 		<li>Home</li>
-				 		<li>FAQ</li>
-				 		<li>About</li>
-				 		<li>Portfolio</li>
-				 		<li>Contact</li>
+				 		<li><a href="#top">Home</a></li>
+				 		<li><a href="#boxes">FAQ</a></li>
+				 		<li><a href="#web">Web</a></li>
+				 		<li><a href="#design">Design</a></li>
+				 		<li><a href="#skills">Skills</a></li>
+				 		<li><a href="#top">Contact</a></li>
 				 	</ul>
 				 </div>
 				 <div class="menu-ctas">
-				 	<a class="blu-btn" href="#">Contact me</a>
+				 	<a class="blu-btn" href="#contact">Contact me</a>
 				 </div>
 			</div>
 		</menu>
@@ -395,7 +552,7 @@
 		</header>
 
 		<main>
-			<div class="container">
+			<div class="container" id="boxes">
 
 				<div class="box right">
 					<div>
@@ -435,20 +592,155 @@
 				</div>
 
 			</div>
+			<div class="container-strip green" id="web">
+				<div class="container">
+					<!-- <div class="content"> -->
+						<h2>Portfolio selection</h2>
+						<div class="portfolio-container">
+							<div class="item" data-image="img/d1.jpg">
+								<a href="#img1"></a>
+							</div>
+							<div class="item" data-image="img/d2.jpg">
+								<a href="backup/pages/king-f8/irons/index.html" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d3.jpg">
+								<a href="backup/pages/king-f8/drivers/index.html" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d4.jpg">
+								<a href="backup/pages/spieth2/index.html" target="_BLANK"></a>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+			</div>
+			<div class="container-strip" id="design">
+				<div class="container">
+					<!-- <div class="content"> -->
+						<h2>Portfolio selection</h2>
+						<div class="portfolio-container">
+							<div class="item" data-image="img/p1.jpg">
+								<a href="#img1"></a>
+							</div>
+							<div class="item" data-image="img/p2.png">
+								<a href="#img2"></a>
+							</div>
+							<div class="item" data-image="img/p3.png">
+								<a href="#img3"></a>
+							</div>
+							<div class="item" data-image="img/p4.png">
+								<a href="#img4"></a>
+							</div>
+							<div class="item" data-image="img/p5.png">
+								<a href="#img5"></a>
+							</div>
+							<div class="item" data-image="img/p7.png">
+								<a href="#img6"></a>
+							</div>
+							<div class="item" data-image="img/p11.jpg">
+								<a href="#img7"></a>
+							</div>
+							<div class="item" data-image="img/p13.png">
+								<a href="#img8"></a>
+							</div>
+							<div class="item" data-image="img/p15.png">
+								<a href="#img9"></a>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+			</div>
+
+			<div id="skills">
+				<div class="container-strip white">
+					<div class="container">
+					<!-- <div class="content"> -->
+						<h2>What I can do</h2>
+						<div class="list-columns">
+							<ul>
+								<li>JavaScript ES6</li>
+								<li>HTML 5 / Bootstrap 4</li>
+								<li>CSS 3 / SCSS</li>
+								<li>Node.js</li>
+								<li>Git</li>
+								<li>Liquid / Shopify</li>
+								<li>Basic Vue.js</li>
+								<li>Basic PHP</li>
+								<li>WordPress Development</li>
+							</ul>
+							<ul>
+								<li>Figma</li>
+								<li>Adobe Illustrator</li>
+								<li>Adobe Photoshop</li>
+								<li>Figma</li>
+								<li>HubSpot</li>
+								<li>Google Analytics</li>
+								<li>Google Tag Manager</li>
+							</ul>
+						</div>
+					<!-- </div> -->
+					</div>
+				</div>
+			</div>
+
 		</main>
 
-		<footer>
+					<!-- Lightbox images -->
+							<a href="#_" class="lightbox" id="img1">
+								<div class="lightbox-inner">
+								  <img src="img/p1.jpg">
+								  <div class="lightbox__content"></div>
+								</div>
+							</a>
+							<a href="#_" class="lightbox" id="img2">
+								  <img src="img/p2.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img3">
+								  <img src="img/p3.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img4">
+								  <img src="img/p4.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img5">
+								  <img src="img/p5.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img6">
+								  <img src="img/p7.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img7">
+								  <img src="img/p11.jpg">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img8">
+								  <img src="img/p13.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img9">
+								  <img src="img/p15.png">
+								  <div class="lightbox__content"></div>
+							</a>
+
+		<footer id="contact">
 			<div class="footer-container container">
-				<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</span>
-				<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</span>
+				<div>
+					<a class="blu-btn" href="#">Back to Top</a>
+				</div>
+				<div class="contact-details">
+					<span class="">Alex Grønmark</span>
+					<span class="">07837 830 955</span>
+					<span class="">alexgmark@gmail.com</span>
+				</div>
 			</div>
 		</footer>
 
 
 		<script>
 			const boxes = document.querySelectorAll('.box');
-			const genContent = document.querySelectorAll('.animate');
-
+			const menu = document.querySelector('menu');
 
 			var logoAnim = anime({
 			  targets: '.cls-1',
@@ -459,10 +751,6 @@
 			  ],
 			  easing: 'easeInOutSine',
 			  duration: 3500,
-			  /*
-			  loop: true,
-			  direction: 'alternate'
-			  */
 			  
 			});
 			var logoAnimBall = anime({
@@ -494,10 +782,34 @@
 					})
 				});
 			}
+			function menuSlide(el) {
+			    var rect = el.getBoundingClientRect();
+			    var scrollTop = window.pageYOffset;
+			    var elemTop = scrollTop - (scrollTop/3);
+			    el.style.top = `${scrollTop}px`;
+			    if(scrollTop>10){
+			    	//el.style.top = `${elemTop}px`;
+			    	document.querySelector('menu .container').classList.add('full-width');
+			    } else {
+			    	document.querySelector('menu .container').classList.remove('full-width');
+			    }
+			    var mq = window.matchMedia('(max-width: 768px)');
+				if(mq.matches){
+					el.style.top = `${elemTop}px`;
+				}
+			}
+			(function(){
+				const portfolioItem = document.querySelectorAll('.portfolio-container .item');
+				portfolioItem.forEach((item) => {
+					let itemImage = item.dataset.image;
+					item.style.backgroundImage = `url('${itemImage}')`;
+				})
+			})();
 
-			scrollAnimation(boxes, genContent);
+			scrollAnimation(boxes);
 			window.addEventListener('scroll', function(e){
-				scrollAnimation(boxes, genContent);
+				scrollAnimation(boxes);
+				menuSlide(menu);
 			})
 
 
