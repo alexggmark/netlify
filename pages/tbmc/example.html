@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<style>
+
+* {
+		/* border: 1px solid #f00; */
+}
+
+#body {
+	margin: 0;
+	overflow-x: hidden;
+	font-family: 'Lato', sans-serif;
+	color: #333333;
+}
+
+	@media screen and (max-width: 520px) {
+		.muted {
+			opacity: 0.6;
+		}
+	}
+
+	.background__bg {
+		background-color: #000;
+		height: 500px;
+		z-index: 0;
+		position: relative;
+	}
+
+	.background__bg-overlay {
+		background-color: #fff;
+		content: '';
+		display: block;
+		height: 300px;
+		top: 400px;
+		position: absolute;
+		width: calc(100% + 100px);
+		transform: rotate(-5deg);
+	}
+
+	.header__strip {
+		width: 100%;
+		min-height: 80px;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 40px 5px 40px;
+		box-sizing: border-box;
+	}
+
+	.header__logo {
+
+	}
+
+	@media screen and (max-width: 520px) {
+
+		.header__logo {
+			margin-top: 30px;
+		}
+
+	}
+
+	.header__menu {
+		display: flex;
+		justify-content: space-between;
+	}
+
+
+	/*************************/
+	/* 		MENU ITEMS	     */
+	/*************************/
+
+	.header__menu-item {
+		color: #fff;
+		margin: 0px 20px;
+		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 200;
+		text-align: center;
+	}
+
+	a.header__menu-item {
+		text-decoration: none;
+	}
+
+	a.header__menu-item::after {
+		display: block;
+		position: relative;
+		content: '';
+		height: 2px;
+		width: 0px;
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		top: 15px;
+		transition: 0.2s ease all;
+		margin: 0 auto;
+	}
+
+	a.header__menu-item:hover::after {
+		width: 50px;
+	}
+
+	@media screen and (max-width: 1824px){
+
+
+
+	}
+
+	@media screen and (max-width: 1224px){
+
+
+
+	}
+
+	@media screen and (max-width: 768px){
+
+		.header__menu-item {
+			margin: 0px 8px;
+			font-size: 15px;
+		}
+
+		a.header__menu-item::after {
+			top: 10px;
+		}
+
+		a.header__menu-item:hover::after {
+			width: 30px;
+			top: 10px;
+		}
+
+	}
+
+	@media screen and (max-width: 480px){
+
+
+
+	}
+
+	/*************************/
+	/* 		BURGER MENU		 */
+	/*************************/
+
+	.header__menu--burger {
+		display: none;
+		top: 0;
+		left: 0;
+		position: fixed;
+		width: 100%;
+		padding: 0px;
+	}
+
+	.header__menu--burgerselector {
+		width: 50px;
+		height: 50px;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #131313;
+	}
+
+	.header__menu--burgerselector:hover {
+		background-color: #202020;
+	}
+
+	#header__menu--burgerselector {
+		transition: all 0.2s ease;
+		width: 38px;
+	}
+
+	.rotate {
+		transform: rotate(90deg);
+	}
+
+	.header__menu--burgercontent {
+		width: 100%;
+		background-color: #fff;
+		padding: 0px;
+		border-top: 1px solid #ccc;
+	}
+
+	.header__menu--burgercontent::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 80%;
+		z-index: -1;
+		box-shadow: 0px 40px 40px rgba(0,0,0,0.2);
+	}
+
+	.deactive {
+		display: none;
+	}
+
+	.header__menu--burgercontentinner {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.header__menuburger-item {
+		text-decoration: none;
+		font-size: 18px;
+		font-weight: 400;
+		padding: 20px 10px;
+		border-bottom: 1px solid #ccc;
+		color: #181818;
+		text-transform: uppercase;
+	}
+
+	.header__menuburger-item:hover {
+		background-color: #EDEDED;
+	}
+
+	.header__menuburger-item a {
+
+	}
+
+	@media screen and (max-width: 1824px){
+
+
+
+	}
+
+	@media screen and (max-width: 1224px){
+
+		.header__strip {
+			flex-direction: column;
+			justify-content: center;
+		}
+
+	}
+
+	@media screen and (max-width: 520px) {
+		.header__menu {
+			display: none;
+		}
+
+		.header__menu--burger {
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-direction: column;
+		}
+	}
+
+
+	/*************************/
+	/* 		END MENU ITEMS   */
+	/*************************/
+
+	.body-wrapper {
+		margin-top: -280px;
+		left: 0;
+		width: 100%;
+		min-height: 700px;
+		display:flex;
+		justify-content: center;
+	}
+
+	.body-wrapper__container {
+		width: 60%;
+		position: relative;
+	}
+
+	@media screen and (max-width: 1824px){
+		.body-wrapper__container {
+			width: 70%;
+		}
+	}
+
+	@media screen and (max-width: 1224px){
+		.body-wrapper__container {
+			width: 90%;
+		}
+	}
+
+	.body-wrapper__container--white {
+		background-color: #fff;
+	}
+
+	.body-wrapper__container--shadow::before {
+		position: relative;
+		z-index: 0;
+	    display: block;
+	    content: '';
+	    width:100%;
+	    height: 500px;
+		box-shadow: 0px -50px 60px rgba(0,0,0,0.2);
+	}
+
+	/***************************/
+	/* P R O B L E M A T I C **/
+	/**************************/
+	.body-wrapper__container-inner {
+	    width: 100%;
+	    box-sizing: border-box;
+	    margin-top: -525px;
+	    padding: 25px 0px 80px 0px;
+	}
+
+	.body-wrapper__container-inner--inverted {
+		margin-top: -560px;
+	}
+
+	.body-wrapper__titlestrip {
+		margin: 0;
+		padding: 30px 0px 50px 0px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.invert {
+		background-color: #000;
+		color: #fff;
+		padding: 0 0 20px 0;
+	}
+
+
+	/*************************/
+	/* 			H1 TAG		 */
+	/*************************/
+
+	.body-wrapper h1 {
+		font-size: 40px;
+		font-weight: 400;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.body-wrapper h1::after {
+		content: '';
+		display: block;
+		position: relative;
+		top: 21px;
+		height: 2px;
+		width: 100%;
+    	margin: 0 auto;
+    	width: 80px;
+    	/* text-align: center; */
+	}
+
+	.body-wrapper h1::after {
+		background-color: #fff;
+		border-top: 1px solid #f00;
+   		border-bottom: 1px solid #f00;
+	}
+
+	.invert h1::after {
+
+		background-color: #181818;
+		border-top: 1px solid #fff;
+   		border-bottom: 1px solid #fff;
+    	/* text-align: center; */
+	}
+
+	.body-wrapper h2 {
+		margin: 50px 0px 35px 0px;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 25px;
+	}
+
+	.body-wrapper h2::after {
+		content: '';
+		position: relative;
+		display: block;
+		height: 1px;
+		background-color: #ccc;
+		top: 20px;
+
+	}
+
+	@media screen and (max-width: 1824px){
+
+
+
+	}
+
+	@media screen and (max-width: 1224px){
+
+
+
+	}
+
+	@media screen and (max-width: 520px){
+
+		.body-wrapper h1 {
+			font-size: 27px;
+		}
+
+	}
+
+	/*************************/
+	/* 			END H1 TAG	 */
+	/*************************/
+
+	.content__box {
+		margin: 0 130px;
+	}
+
+	.content__box p {
+		line-height: 34px;
+		font-size: 18px;
+	}
+
+	@media screen and (max-width: 1824px){
+
+
+
+	}
+
+	@media screen and (max-width: 1224px){
+
+		.content__box {
+			margin: 0 80px;
+		}
+
+	}
+
+	@media screen and (max-width: 768px){
+
+		.content__box {
+			margin: 0 40px;
+		}
+
+	}
+
+	@media screen and (max-width: 520px){
+
+		.content__box {
+			margin: 0 40px;
+		}
+
+		.content__box p {
+			line-height: 28px;
+			font-size: 15px;
+		}
+
+	}
+
+	.footer {
+		width: 100%;
+		min-height: 150px;
+		background-color: #000;
+		position: relative;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		padding-top: 45px;
+	}
+
+	.footer__menu {
+		text-align: center;
+		color: #fff;
+		text-transform: uppercase;
+		display: flex;
+		font-size: 14px;
+	}
+
+	.footer__menu--item {
+		margin: 0 15px;
+		text-decoration: none;
+		color: #fff;
+	}
+
+	.footer__menu--item:hover {
+		text-decoration: underline;
+	}
+
+	@media screen and (max-width: 768px){
+
+		.footer__menu {
+			flex-direction: column;
+		}
+
+		.footer__menu--item {
+			margin: 5px 15px;
+		}
+
+	}
+
+	.footer__menu--social {
+		display: flex;
+		padding: 55px;
+	}
+
+</style>
+
+</head>
+
+<body id="body">
+
+	<div class="background__bg">
+		
+		<div class="background__bg-overlay"></div>
+
+	</div>
+
+	<div class="header__strip">
+
+		<div class="header__logo">
+			<img src="img/logo.jpg">
+		</div>
+		
+		<div class="header__menu">
+			<a href="#" class="header__menu-item">Home</a>
+			<a href="#" class="header__menu-item">About</a>
+			<a href="#" class="header__menu-item">Services</a>
+			<a href="#" class="header__menu-item">Our&nbsp;Work</a>	
+			<a href="#" class="header__menu-item">Categories</a>
+			<a href="#" class="header__menu-item">Contact</a>							
+		</div>
+		<div class="header__menu--burger">
+			<div class="header__menu--burgerselector">
+				<img src="img/burg.svg" id="header__menu--burgerselector">
+			</div>
+			<div class="header__menu--burgercontent deactive" id="header__menu--burgercontent">
+				<div class="header__menu--burgercontentinner">
+					<a href="#" class="header__menuburger-item">Home</a>
+					<a href="#" class="header__menuburger-item">About</a>
+					<a href="#" class="header__menuburger-item">Services</a>
+					<a href="#" class="header__menuburger-item">Our Work</a>	
+					<a href="#" class="header__menuburger-item">Categories</a>
+					<a href="#" class="header__menuburger-item">Contact</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="body-wrapper">
+		<div class="body-wrapper__container body-wrapper__container--white body-wrapper__container--shadow">
+			<div class="body-wrapper__container-inner <!--body-wrapper__container-inner--inverted-->">
+				
+				<div class="body-wrapper__titlestrip <!--invert-->">
+					<h1 class="body-wrapper__titlestrip--underline">This is an active project!</h1>
+				</div>
+				<div class="content__box">
+<p><strong><em>Disclaimer: I'm currently in the process of porting this site to Wordpress for a client - but this should showcase the basic tenets of responsive design and UX.</em></strong></p><div style="height:50px;width:50px"></div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<h2>Test heading</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<h2>Content Paragraph</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+
+		<div class="footer__menu">
+			<a class="footer__menu--item" href="#">Privacy & Cookie Policy</a>
+			<a class="footer__menu--item" href="#">Terms & Conditions</a>
+			<a class="footer__menu--item" href="#">Our Values</a>
+			<a class="footer__menu--item" href="#">Online Brochure</a>
+		</div>
+		<div class="footer__menu--social">
+			<img src="img/soc4.jpg">
+		</div>
+
+	</div>
+
+<script>
+var burgerSelector = document.getElementById("header__menu--burgerselector");
+var burgerContent = document.getElementById("header__menu--burgercontent");
+var bodyWrapper = document.querySelector(".body-wrapper__container-inner");
+burgerSelector.addEventListener("click",function(){
+	burgerContent.classList.toggle("deactive");
+	burgerSelector.classList.toggle("rotate");
+	bodyWrapper.classList.toggle("muted");
+})
+
+
+</script>
+
+</body>
+</html>

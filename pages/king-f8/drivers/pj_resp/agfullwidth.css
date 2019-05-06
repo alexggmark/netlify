@@ -1,0 +1,25 @@
+html,body {
+	margin:0;
+}
+
+#wrapper {
+	min-width: 30px;
+}
+
+.main-wrapper {
+	background-image: none;	
+	background-color: #fff;
+}
+
+#main {
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+.breadcrumb {
+	padding: 20px 10px 15px !important;
+    max-width: 940px;
+	margin: 0 auto;
+	background-color: #fff;
+}

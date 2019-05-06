@@ -1,0 +1,2 @@
+[02-Jul-2018 10:00:06 America/Chicago] PHP Warning:  require(/home1/alexgmark/public_html/pages/wordpress/wp-includes/option.php): failed to open stream: No such file or directory in /home1/alexgmark/public_html/pages/wordpress/wp-includes/functions.php on line 8
+[02-Jul-2018 10:00:06 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home1/alexgmark/public_html/pages/wordpress/wp-includes/option.php' (include_path='.:/opt/php56/lib/php') in /home1/alexgmark/public_html/pages/wordpress/wp-includes/functions.php on line 8
