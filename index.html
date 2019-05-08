@@ -1,1 +1,933 @@
-Hey there w'oah boy
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:300,600" rel="stylesheet">
+		<link rel="stylesheet" href="<CSS URL>">
+		<script src="libs/animejs/lib/anime.min.js"></script>
+		<style>
+		* {
+			box-sizing: border-box;
+		}
+		/* Adjust for fixed menu height on anchor scroll */
+		@media(min-width:768px){
+			*[id]::before { 
+			  display: block; 
+			  content: ''; 
+			  height: 20px; 
+			  visibility: hidden; 
+			}
+		}
+		.shadow {
+			-webkit-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
+			-moz-box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.16);
+			box-shadow: 2px 7px 17px 0px rgba(0,0,0,0.17);
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			/* background-color: #00e4bc; 
+				Tango Pink = EF767A
+				Deep carmine = EF3E36
+			*/
+			background-color: #fff;
+			margin: 0;
+			overflow-x: hidden;
+		}
+		.full-width {
+			width: 100%!important;
+		}
+		.container {
+			width: 100%;
+			margin: 0 auto;
+			display: table;
+			transition: width 0.2s;
+			/* border: 1px solid red; */
+		}
+		@media(min-width:768px){
+			.container {
+				width: 100%;
+			}
+		}
+		@media(min-width:992px){
+			.container {
+				width: 900px;
+			}
+		}
+		@media(min-width:1200px){
+			.container {
+				width: 1120px;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+
+		/* ------------------------ TYPOGRAPHY ------------------------ */
+
+		body {
+			font-family: 'Nunito', sans-serif;
+		}
+		h2 {
+			font-size:56px;
+			margin-bottom:2rem;
+		}
+		main .container-strip.green h2 {
+			color: #fff;
+		}
+		main p {
+			line-height: 2rem;
+		}
+		
+		/* ------------------------ / TYPOGRAPHY ------------------------ */
+
+		/* ------------------------ MENU LINK ELEMENTS ------------------------ */
+		menu {
+			position: relative;
+			top: 0;
+			margin: 0;
+			padding: 0;
+			background-color: #00e4bc;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 600;
+			width: 100%;
+			z-index: 3;
+		}
+		menu .container {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		menu .menu-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		menu .menu-container .menu-inner {
+			width:calc(100% - 150px);
+			display: flex;
+		    align-items: center;
+		}
+		menu .menu-container .menu-inner ul {
+			list-style: none;
+			padding-left: 0;
+			margin: 0;
+		}
+		menu .menu-container .menu-inner ul li {
+			float: none;
+		}
+		menu .menu-container .menu-inner ul li a {
+			color: inherit;
+			text-decoration: inherit;
+		}
+		menu .menu-container .menu-ctas {
+			width: 150px;
+			position: relative;
+
+		}
+		@media(min-width:768px){
+			menu .menu-container .menu-inner ul li {
+				float: left;
+				margin-right: 36px;
+			}
+		}
+		@media(min-width:992px){
+			menu .menu-container {
+				flex-direction: row;
+			}
+			menu .menu-container .menu-inner {
+				
+				margin-top:0;
+			}
+			menu .menu-container .menu-ctas {
+				width: 250px;
+			}
+		}
+		@media(min-width:1200px){
+
+		}
+
+        	/* MENU ITEM ANIMATION */
+		menu .menu-container .menu-inner ul li {
+			transition:0.4s;
+			font-size: 22px;
+		}
+		menu .menu-container .menu-inner ul li:hover {
+			cursor: pointer;
+			transform: translateX(8px);
+		}
+		menu .menu-container .menu-inner ul li:hover::after {
+			display: block;
+			position: relative;
+			content: '';
+			height: 2px;
+			width: 36px;
+			background-color: #fff;
+			margin-top: 6px;
+		}
+
+		@media(min-width:768px){
+			menu .menu-container .menu-inner ul li {
+				font-size: 18px;
+				padding: 8px;
+			}
+			menu .menu-container .menu-inner ul li:hover {
+				cursor: pointer;
+				transform: translateY(6px);
+			}
+			menu .menu-container .menu-inner ul li:hover::after {
+				display: block;
+				position: absolute;
+				content: '';
+				height: 6px;
+				background-color: #fff;
+				margin-top: 6px;
+			}
+		}
+
+			/* / MENU ITEM ANIMATION */
+
+		/* ------------------------ / MENU LINK ELEMENTS ------------------------ */
+
+		/* ------------------------ HEADER LOGO ELEMENTS ------------------------ */
+		header {
+			background-color: #00e4bc;
+			position: relative;
+			z-index: 1;
+		}
+		header .svg-logo-container {
+			max-width:400px;
+			padding-top:7.5rem;
+			padding-bottom:1rem;
+			padding-left:1rem;
+			padding-right:1.5rem;
+		}
+		header .svg-logo-container svg {
+			overflow:visible;
+		}
+		@media(min-width:576px){
+			header .svg-logo-container {
+				padding-top:10rem;
+				max-width:520px;
+			}
+		}
+		@media(min-width:1200px){
+			header .svg-logo-container {
+				padding-top:11rem;
+				max-width:772px;
+			}
+		}
+        header .cls-1, header .cls-2 {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+            stroke-width: 60px;
+        }
+        header .cls-1 {
+
+        }
+
+        	/* ROTATE LOGO MED-QUERIES & OTHER */
+
+        @media(max-width:576px){
+			header .svg-logo-container {
+				transform: rotate(90deg);
+				transform-origin: 30% -100%;
+				max-width: 100%;
+				padding:0;
+			}
+			header .rotate-logo-inner {
+				padding: 50% 0;
+
+			}
+			header .svg-logo-container svg {
+				overflow:hidden;
+			}
+		}
+        	/* / ROTATE LOGO MED-QUERIES */
+
+        /* ------------------------ / HEADER LOGO ELEMENTS ------------------------ */
+
+        /* ------------------------ MAIN ELEMENTS ------------------------ */
+        main {
+			font-size: 18px;
+			font-weight: 300;
+			color: #3f464c;
+			position: relative;
+			width: 100%;
+        }
+        main .container-strip {
+        	background-color:#f1f1f1;
+        	padding: .5rem 1rem 2.5rem 1rem;
+    		position: relative;
+    		z-index:2;
+        }
+        main .container-strip.green {
+        	background-color: #00e4bc;
+        }
+        main .container-strip.white {
+        	background-color: #fff;
+        }
+        main .box-container {
+        	padding-bottom: 1.5rem;
+        }
+        main .content {
+        	padding-left: 2rem;
+        	padding-right: 0.2rem;
+        	padding-bottom: 2rem;
+        }
+        main .content.animate {
+        	opacity: 0;
+        }
+        main .box {
+        	display: flex;
+        	align-items: center;
+        	justify-content: center;
+        	width: 100%;
+        	/* min-height:260px; */
+        	background-color:rgba(255,255,255,0);
+        	opacity: 0;
+        	padding: 2rem 2rem;
+
+        }
+        main .box.left {
+        	float: left;
+        	clear:right;
+        }
+        main .box.right {
+        	float: right;
+        	clear: left;
+        }
+        main .box div {
+        	display: flex;
+        	flex-direction: column;
+        }
+        main .box div span {
+			margin-bottom: 1.5rem;
+		}
+		@media(min-width:768px){
+	        main .box {
+	        	padding: 2rem 5rem;
+	        }
+		}
+		@media(min-width:992px){
+
+		}
+		@media(min-width:1200px){
+	        main .box {
+	        	width: 60%;
+	        	padding: 1rem 2rem;
+	        }
+		}
+
+		footer {
+			background-color: #00e4bc;
+			color: #fff;
+			position: relative;
+			bottom: 0;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		footer .footer-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-top:3rem;
+			padding-bottom:3rem;
+			flex-direction: column-reverse;
+		}
+		footer .footer-container div {
+			padding:2rem;
+			width: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+		footer .footer-container .contact-details {
+			font-size: 22px;
+		}
+		footer .footer-container .contact-details span {
+			margin-bottom: 10px;
+		}
+		@media(max-width:576px){
+			footer .footer-container {
+				flex-direction: column-reverse;
+			}
+			footer .footer-container div {
+				padding: 1rem;
+			}
+		}
+
+		/* ------------------------ / MAIN ELEMENTS ------------------------ */
+
+		/* ------------------------ PORTFOLIO ELEMENTS ------------------------ */
+
+		main .gallery {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+		main .gallery img {
+			width: 200px;
+			height: 200px;
+		}
+		main .portfolio-container {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+		main .portfolio-container .item {
+			position: relative;
+			width: 14%;
+			padding-top: 14%;
+			margin: 5px;
+			background-color: #f00;
+			background-size:cover;
+			background-position: center;
+			transition: 0.1s;
+		}
+		@media(max-width:1200px){
+			main .portfolio-container .item {
+				width: 19%;
+				padding-top: 19%;
+			}
+		}
+		@media(max-width:768px){
+			main .portfolio-container .item {
+				width: 24%;
+				padding-top: 24%;
+			}
+		}
+		@media(max-width:576px){
+			main .portfolio-container .item {
+				width: 40%;
+				padding-top: 40%;
+			}
+		}
+		main .portfolio-container .item a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		main .portfolio-container .item:hover {
+			opacity: 0.8;
+		}
+
+		.lightbox:target {
+			outline: none;
+			display: block;
+		}
+		.lightbox {
+			display: none;
+			position: fixed;
+			z-index: 999;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			top: 0;
+			left: 0;
+			background: rgba(255,255,255,0.9);
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.lightbox img {
+			max-width: calc(60% - 2rem);
+			margin: 1rem;
+		}
+		@media(max-width:768px){
+			.lightbox img {
+				max-width: calc(100% - 2rem);
+				margin: 1rem;
+			}
+		}
+		a.lightbox {
+			text-decoration: none;
+		}
+
+		/* ------------------------ / PORTFOLIO ELEMENTS ------------------------ */
+
+		/* ------------------------ LIST ------------------------ */
+
+		main .list-columns {
+			display: flex;
+			flex-direction: row;
+		}
+		main .list-columns ul {
+			width: 50%;
+			margin-top: 0;
+		    margin-bottom: 0;
+		    font-size: 22px;
+		}
+		main .list-columns ul li {
+			margin-bottom: 0.3rem;
+			margin-left: 2rem;
+		}
+		@media(max-width:768px){
+			main .list-columns {
+				flex-direction: column;
+			}
+			main .list-columns ul {
+				width: 100%;
+			}
+		}
+		main .list ul {
+			width: 100%;
+			margin-top: 0;
+		    margin-bottom: 0;
+		    font-size: 26px;
+		    list-style: none;
+		}
+		@media(max-width:576px){
+			main .list ul {
+			   
+			}
+		}
+		main .list ul li {
+			margin: 0.8rem 0;
+		}
+		main .list ul li a {
+			color: #3f464c;
+			transition: 0.2s;
+			padding: 5px 10px;
+		}
+		main .list ul li:hover {
+			transition: 0.6s;
+		}
+		main .list ul li:hover {
+			transform: translateX(10px);
+		}
+		main .list ul li a:hover {
+			color: #fff;
+			background-color: #00e4bc;
+		}
+
+		/* ------------------------ / LIST ------------------------ */
+
+		/* ------------------------ LINKS ------------------------ */
+		a.blu-btn {
+			color: #fff;
+			text-decoration: none;
+			background-color: #EF3E36;
+			padding: 0.8rem 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 400;
+			border-radius:3px;
+			font-size:16px;
+			transition:0.2s;
+			position:relative;
+			z-index:2;
+		}
+		a.blu-btn:hover {
+			background-color: #f45249;
+		}
+		menu a.blu-btn:hover {
+			-webkit-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			-moz-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+		}
+		main a.blu-btn {
+			background-color: #00e4bc;
+			max-width: 160px;
+		}
+		main a.blu-btn:hover {
+			color: #fff;
+			background-color: #13f7cd;
+		}
+		footer a.blu-btn {
+			background-color: transparent;
+			border: 1px solid #fff;
+			width: 100%;
+			max-width: 290px;
+		}
+		footer a.blu-btn:hover {
+			background-color: #fff;
+			color: #00e4bc;
+			/* 
+			-webkit-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			-moz-box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.21);
+			*/
+		}
+		main .content a.blu-btn {
+			margin-top: 2rem;
+		}
+		main .links a {
+			display: block;
+			font-size: 26px;
+		}
+		/* ------------------------ / BUTTONS ------------------------ */
+		</style>
+	</head>
+	<body>
+
+		<menu>
+			<div class="container menu-container">
+				 <div class="menu-inner">
+				 	<ul>
+				 		<li><a href="#top">Home</a></li>
+				 		<li><a href="#boxes">FAQ</a></li>
+				 		<li><a href="#web">Web</a></li>
+				 		<li><a href="#design">Design</a></li>
+				 		<li><a href="#skills">Skills</a></li>
+				 		<li><a href="#writing">Writing</a></li>
+				 	</ul>
+				 </div>
+				 <div class="menu-ctas">
+				 	<a class="blu-btn" href="#contact">Contact me</a>
+				 </div>
+			</div>
+		</menu>
+		<header>
+			<div class="container">
+					<div class="rotate-logo-inner">
+						<div class="svg-logo-container">
+						<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1988.64 247.73">
+						    <line class="cls-1" x1="43.49" y1="52" x2="186.33" y2="52" />
+						    <line class="cls-1" x1="114.91" y1="52" x2="114.91" y2="194.83" />
+						    <path class="cls-1" d="M320.5,52a70.69,70.69,0,0,0-70.69,70.69v72.14" />
+						    <path class="cls-1" d="M449.49,195.64c-37.4,0-69.91-31.61-71.75-68.81C375.87,89,406.66,55.54,444,52.25c22.26-2,44.46,7.38,59.27,24" />
+						    <path class="cls-1" d="M859.94,195.64c-37.4,0-69.91-31.61-71.75-68.81-1.88-37.8,28.92-71.29,66.26-74.58,22.25-2,44.46,7.38,59.27,24" />
+						    <circle class="cls-1" cx="1470.38" cy="123.08" r="72.98" />
+						    <path class="cls-1" d="M1327.13,124.8a69.21,69.21,0,1,1-69.21-69.21" />
+						    <path class="cls-1" d="M568.92,119.41A75.54,75.54,0,0,1,644.46,195" />
+						    <line class="cls-1" x1="567.92" y1="194.77" x2="567.92" y2="196.07" />
+						    <path class="cls-1" d="M573.92,46.16A146.79,146.79,0,0,1,720.71,193" />
+						    <path class="cls-1" d="M1957,156.18A102.83,102.83,0,0,1,1854.17,53.35" />
+						    <line class="cls-2" x1="1958.36" y1="53.35" x2="1958.36" y2="54.65" />
+						    <line class="cls-2" x1="1825.36" y1="196.25" x2="1825.36" y2="197.55" />
+						    <path class="cls-1" d="M1117.19,194.45V122.31a70.69,70.69,0,0,0-141.38,0v72.14" />
+						    <line class="cls-1" x1="1327.13" y1="124.8" x2="1327.13" y2="50.1" />
+						    <path class="cls-1" d="M1614,52.93v72.15a70.69,70.69,0,1,0,141.38,0V52.93" />
+						</svg>
+						</div>
+					</div>
+			</div>
+		</header>
+
+		<main style="position: relative">
+			<div class="container box-container anchor" id="boxes">
+
+				<div class="box right">
+					<div>
+						<span>
+							<h2>Javascript</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box left">
+					<div>
+						<span>
+							<h2>Graphic Design</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box right">
+					<div>
+						<span>
+							<h2>Copywriting</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+				<div class="box left">
+					<div>
+						<span>
+							<h2>See Portfolio</h2>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia.</p>
+						</span>
+						<a class="blu-btn" href="#">Contact me</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="container-strip green anchor" id="web">
+				<div class="container">
+					<!-- <div class="content"> -->
+						<h2>Web design</h2>
+						<div class="portfolio-container">
+							<div class="item" data-image="img/d1.jpg">
+								<a href="pages/king-f8/drivers/index.html" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d2.jpg">
+								<a href="pages/king-f8/irons/index.html" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d3.jpg">
+								<a href="http://www.brandedmerchandise.co.uk/" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d4.jpg">
+								<a href="pages/spieth2/index.html" target="_BLANK"></a>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+			</div>
+			<div class="container-strip anchor" id="design">
+				<div class="container">
+					<!-- <div class="content"> -->
+						<h2>Graphic design</h2>
+						<div class="portfolio-container">
+							<div class="item" data-image="img/p1.jpg">
+								<a href="#img1"></a>
+							</div>
+							<div class="item" data-image="img/p2.png">
+								<a href="#img2"></a>
+							</div>
+							<div class="item" data-image="img/p3.png">
+								<a href="#img3"></a>
+							</div>
+							<div class="item" data-image="img/p4.png">
+								<a href="#img4"></a>
+							</div>
+							<div class="item" data-image="img/p5.png">
+								<a href="#img5"></a>
+							</div>
+							<div class="item" data-image="img/p7.png">
+								<a href="#img6"></a>
+							</div>
+							<div class="item" data-image="img/p11.jpg">
+								<a href="#img7"></a>
+							</div>
+							<div class="item" data-image="img/p13.png">
+								<a href="#img8"></a>
+							</div>
+							<div class="item" data-image="img/p15.png">
+								<a href="#img9"></a>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+			</div>
+			<div class="anchor" id="skills">
+				<div class="container-strip white">
+					<div class="container">
+					<!-- <div class="content"> -->
+						<h2>What I can do</h2>
+						<div class="list-columns">
+							<ul>
+								<li>JavaScript ES6</li>
+								<li>HTML 5 / Bootstrap 4</li>
+								<li>CSS 3 / SCSS</li>
+								<li>Node.js / Express</li>
+								<li>Git</li>
+								<li>Liquid / Shopify</li>
+								<li>Basic Vue.js</li>
+								<li>Basic PHP</li>
+							</ul>
+							<ul>
+								<li>Figma</li>
+								<li>Adobe Illustrator</li>
+								<li>Adobe Photoshop</li>
+								<li>HubSpot / HubL</li>
+								<li>Universal Analytics</li>
+								<li>WordPress Development</li>
+								<li>MySQL</li>
+							</ul>
+						</div>
+					<!-- </div> -->
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="container-strip white" style="border-top: 1px dotted #ccc">
+					<div class="container">
+					<!-- <div class="content"> -->
+						<h2>What I'm learning</h2>
+						<div class="list-columns">
+							<ul>
+								<li>Nuxt.js</li>
+								<li>Webpack</li>
+								<li>MongoDB</li>
+							</ul>
+							<ul>
+								<li>Hugo</li>
+								<li></li>
+							</ul>
+						</div>
+					<!-- </div> -->
+					</div>
+				</div>
+			</div>
+			<div class="anchor" id="writing">
+				<div class="container-strip white" style="border-top: 1px dotted #ccc">
+					<div class="container">
+					<!-- <div class="content"> -->
+						<h2>Writing</h2>
+						<div class="list">
+							<ul>
+								<li><a href="https://www.bestresponsemedia.co.uk/improve-conversion-rate/" target="_BLANK">Article on Conversion Rate Optimisation for Best Response Media</a></li>
+								<li><a href="https://www.bestresponsemedia.co.uk/enhance-conversions-persuasive-copy/" target="_BLANK">Article on persuasive copywriting for Best Response Media</a></li>
+							</ul>
+						</div>
+						</div>
+					<!-- </div> -->
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+					<!-- Lightbox images -->
+							<a href="#_" class="lightbox" id="img1">
+								<div class="lightbox-inner">
+								  <img src="img/p1.jpg">
+								  <div class="lightbox__content"></div>
+								</div>
+							</a>
+							<a href="#_" class="lightbox" id="img2">
+								  <img src="img/p2.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img3">
+								  <img src="img/p3.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img4">
+								  <img src="img/p4.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img5">
+								  <img src="img/p5.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img6">
+								  <img src="img/p7.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img7">
+								  <img src="img/p11.jpg">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img8">
+								  <img src="img/p13.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img9">
+								  <img src="img/p15.png">
+								  <div class="lightbox__content"></div>
+							</a>
+
+		<footer id="contact">
+			<div class="footer-container container">
+				<div>
+					<a class="blu-btn" href="#">Back to Top</a>
+				</div>
+				<div class="contact-details">
+					<span class="">Alex Grønmark</span>
+					<span class="">07837 830 955</span>
+					<span class="">alexgmark@gmail.com</span>
+				</div>
+			</div>
+		</footer>
+
+
+		<script>
+			const boxes = document.querySelectorAll('.box');
+			const menu = document.querySelector('menu');
+			const anchors = document.querySelectorAll('a.anchor[href^="#"]');
+
+			const logoAnim = anime({
+			  targets: '.cls-1',
+			  stroke: 'rgba(255,255,255, 1)',
+			  keyframes: [
+			    {strokeDashoffset: [anime.setDashoffset, 0],},
+			    {delay: 500},
+			  ],
+			  easing: 'easeInOutSine',
+			  duration: 3500,
+			  
+			});
+			const logoAnimBall = anime({
+				targets: '.cls-2',
+				translateX: ['500px','0'],
+				stroke: ['#00e4bc','#fff'],
+				duration:2000,
+				delay: anime.stagger(400)
+			})
+			function isScrolledIntoView(el) {
+			    var rect = el.getBoundingClientRect();
+			    var elemTop = rect.top;
+			    var elemBottom = rect.bottom;
+			    var isVisible = (elemTop >= 0) && (elemTop <= window.innerHeight - 300);
+			    return isVisible;
+			}
+			function scrollAnimation(...elements){
+				elements.forEach(function(item){
+					item.forEach(function(item){
+						if(isScrolledIntoView(item)&&!item.classList.contains('completed')){
+							anime({
+								targets: item,
+								translateY: ['100px', '0'],
+								opacity: [0,1],
+								duration: 3500
+							});
+							item.classList.add('completed');
+						}
+					})
+				});
+			}
+			function menuSlide(el) {
+			    var rect = el.getBoundingClientRect();
+			    var scrollTop = window.pageYOffset;
+			    var elemTop = scrollTop - (scrollTop/3);
+			    el.style.top = `${scrollTop}px`;
+			    if(scrollTop>10){
+			    	document.querySelector('menu .container').classList.add('full-width');
+			    } else {
+			    	document.querySelector('menu .container').classList.remove('full-width');
+			    }
+			    var mq = window.matchMedia('(max-width: 768px)');
+				if(mq.matches){
+					el.style.top = `${elemTop}px`;
+				}
+			}
+			(function(){
+				const portfolioItem = document.querySelectorAll('.portfolio-container .item');
+				portfolioItem.forEach((item) => {
+					let itemImage = item.dataset.image;
+					item.style.backgroundImage = `url('${itemImage}')`;
+				})
+			})();
+			(function(){
+				anchors.forEach((item) => {
+					item.addEventListener('click', (e) => {
+				        let hashval = item.getAttribute('href')
+				        let target = document.querySelector(hashval)
+				        target.scrollIntoView({
+				            behavior: 'smooth',
+				            block: 'start'
+				        })
+				        history.pushState(null, null, hashval)
+				        e.preventDefault()
+					})
+				});
+			})();
+
+			scrollAnimation(boxes);
+			window.addEventListener('scroll', function(e){
+				scrollAnimation(boxes);
+				menuSlide(menu);
+			})
+
+			baguetteBox.run('.gallery', {
+			    animation: 'fadeIn',
+			    noScrollbars: true
+			});
+
+		</script>
+	</body>
+</html>
