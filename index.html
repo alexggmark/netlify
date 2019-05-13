@@ -37,6 +37,15 @@
 			background-color: #fff;
 			margin: 0;
 			overflow-x: hidden;
+			padding-top: 66px;
+		}
+		@media(max-width:767px){
+			body {
+				padding-top: 0px;
+			}
+		}
+		#sitewrapper {
+			overflow-x: hidden;
 		}
 		.full-width {
 			width: 100%!important;
@@ -96,6 +105,11 @@
 			font-weight: 600;
 			width: 100%;
 			z-index: 3;
+		}
+		@media(min-width:768px){
+			menu {
+				position: fixed;
+			}
 		}
 		menu .container {
 			padding-left: 1rem;
@@ -174,7 +188,7 @@
 		@media(min-width:768px){
 			menu .menu-container .menu-inner ul li {
 				font-size: 18px;
-				padding: 8px 7px;
+				padding: 8px 5px;
 			}
 			menu .menu-container .menu-inner ul li:hover {
 				cursor: pointer;
@@ -444,8 +458,8 @@
 			overflow-x: hidden;
 		}
 		.lightbox img {
-			max-width: 90%;
-		    max-height: 80%;
+			max-width: 100%;
+		    max-height: 100%;
 			margin: 1rem;
 		}
 		@media(max-width:767px){
@@ -572,6 +586,7 @@
 		</style>
 	</head>
 	<body>
+	<div id="sitewrapper">
 
 		<menu>
 			<div class="container menu-container">
@@ -663,6 +678,12 @@
 					<!-- <div class="content"> -->
 						<h2 class="animate">Web design</h2>
 						<div class="portfolio-container animate">
+							<div class="item" data-image="img/d6.jpg">
+								<a href="https://www.women-in-sales-summit.com/" target="_BLANK"></a>
+							</div>
+							<div class="item" data-image="img/d5.jpg">
+								<a href="https://www.europeanwomenintech.com/agenda" target="_BLANK"></a>
+							</div>
 							<div class="item" data-image="img/d1.jpg">
 								<a href="pages/king-f8/drivers/index.html" target="_BLANK"></a>
 							</div>
@@ -684,6 +705,21 @@
 					<!-- <div class="content"> -->
 						<h2 class="animate">Graphic design</h2>
 						<div class="portfolio-container animate">
+							<div class="item" data-image="img/p19.jpg">
+								<a href="#img13"></a>
+							</div>
+							<div class="item" data-image="img/p20.jpg">
+								<a href="#img14"></a>
+							</div>
+							<div class="item" data-image="img/p16.png">
+								<a href="#img10"></a>
+							</div>
+							<div class="item" data-image="img/p17.png">
+								<a href="#img11"></a>
+							</div>
+							<div class="item" data-image="img/p18.png">
+								<a href="#img12"></a>
+							</div>
 							<div class="item" data-image="img/p1.jpg">
 								<a href="#img1"></a>
 							</div>
@@ -824,6 +860,26 @@
 								  <img src="img/p15.png">
 								  <div class="lightbox__content"></div>
 							</a>
+							<a href="#_" class="lightbox" id="img10">
+								  <img src="img/p16.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img11">
+								  <img src="img/p17.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img12">
+								  <img src="img/p18.png">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img13">
+								  <img src="img/p19.jpg">
+								  <div class="lightbox__content"></div>
+							</a>
+							<a href="#_" class="lightbox" id="img14">
+								  <img src="img/p20.jpg">
+								  <div class="lightbox__content"></div>
+							</a>
 
 		<footer id="contact">
 			<div class="footer-container container">
@@ -837,7 +893,7 @@
 				</div>
 			</div>
 		</footer>
-
+		</div>
 
 		<script>
 			const boxes = document.querySelectorAll('.box');
@@ -892,8 +948,9 @@
 			function menuSlide(el) {
 			    const rect = el.getBoundingClientRect();
 			    const scrollTop = window.pageYOffset;
-			    const elemTop = scrollTop - (scrollTop/3);
-			    el.style.top = `${scrollTop}px`;
+			    const elemTop = scrollTop - (scrollTop/2.2);
+			    //el.style.top = `${scrollTop}px`;
+			    //el.style.top = 0;
 			    if(scrollTop>10){
 			    	document.querySelector('menu .container').classList.add('full-width');
 			    } else {
@@ -902,6 +959,8 @@
 			    const mq = window.matchMedia('(max-width: 767px)');
 				if(mq.matches){
 					el.style.top = `${elemTop}px`;
+				} else {
+					el.style.top = '0px';
 				}
 			}
 
@@ -929,8 +988,11 @@
 			})();
 
 			scrollAnimation(boxes, animate);
-			window.addEventListener('scroll', function(e){
+			window.addEventListener('scroll', (e) => {
 				scrollAnimation(boxes, animate);
+				menuSlide(menu);
+			})
+			window.addEventListener('resize', () => {
 				menuSlide(menu);
 			})
 
