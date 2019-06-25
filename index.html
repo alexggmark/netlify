@@ -3,7 +3,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:300,600" rel="stylesheet">
-		<link rel="stylesheet" href="<CSS URL>">
 		<script src="libs/animejs/lib/anime.min.js"></script>
 		<style>
 		* {
@@ -83,6 +82,18 @@
 		}
 		main p {
 			line-height: 2rem;
+		}
+		#intro p {
+			font-size: 1.4rem;
+			line-height: 2.4rem;
+			padding: 0rem 2.6rem;
+		}
+		@media(max-width:768px){
+			#intro p {
+				font-size: 1.2rem;
+				line-height: 2rem;
+				padding: 0rem 2rem;
+			}
 		}
 		
 		/* ------------------------ / TYPOGRAPHY ------------------------ */
@@ -633,6 +644,19 @@
 		</header>
 
 		<main style="position: relative">
+			<div class="container-strip grey" id="intro">
+				<div class="container animate">
+					<p>
+						I’m a 25 year old self-taught web developer/designer with experience at a Magento agency, the largest golf retailer in Europe, and recently a fast-paced D&I event startup.
+					</p>
+					<p>
+						I have two main passions in life: speaking to people and creating things. With my head buried in a sketchbook for most of my childhood, time away from pen and paper meant time online. From coding my first simple forum in PHP and MySQL at the age of 12 to running a blog about art at university, I’ve always understood the internet as a tool for communication.
+					</p>
+					<p>
+						A self-taught coder and designer, I’ve relied on perseverance to push through challenges. From newbie to professional within 9 months of leaving my sales job, I’ve set lofty goals for myself. Having been a successful salesperson and a copywriter, I’ve been able to bring unique skills to the roles I’ve taken on - all the while working as a freelancer in my spare time.					
+					</p>
+				</div>
+			</div>
 			<div class="container box-container anchor" id="boxes">
 
 				<div class="box right">
@@ -769,6 +793,7 @@
 								<li class="animate">Liquid / Shopify</li>
 								<li class="animate">Basic Vue.js</li>
 								<li class="animate">Basic PHP</li>
+								<li class="animate">JAMstack development</li>
 							</ul>
 							<ul>
 								<li class="animate">Figma</li>
@@ -913,7 +938,8 @@
 			  ],
 			  easing: 'easeInOutSine',
 			  duration: 3500,
-			  
+			  direction: 'alternate',
+			  loop: true
 			});
 
 			const logoAnimBall = anime({
